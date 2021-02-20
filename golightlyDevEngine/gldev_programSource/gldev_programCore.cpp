@@ -4,6 +4,7 @@
 
 gldev::ProgramCore::ProgramCore() {
 	this->language = GLDEV_USE_ENGLISH;
+	this->frameDataNum = 0;
 }
 
 gldev::ProgramCore::~ProgramCore() {

@@ -10,9 +10,11 @@ namespace gldev {
 	public:
 		~GraphicsAPI_sdl2();
 		gldev::Error setup(InitialisationFormForProgram& initialisationFormForProgram);
+		int run();
 	private:
 		SDL_Window* window;
 		SDL_Renderer* renderer;
+		std::string* tempRenderingErrorDescriptionPointer; //points to tempRenderingErrorDescription in program
 	};
 }
 #endif

@@ -17,7 +17,10 @@ namespace gldev {
 		void runRenderingThread();
 		void runLoadingThread();
 		void runProgramCoreThread();
+		void writeError();
 	protected:
+		bool useError(int useType);
+		void useFrameData();
 		std::filesystem::path getUnicodeFilePath(std::string programName, std::string fileName);
 	private:
 		GraphicsAPI* graphicsAPI;
@@ -25,6 +28,9 @@ namespace gldev {
 		FrameData* frameData;
 		bool* containsValidFrame;
 		gldev::Error error;
+		std::string tempRenderingErrorDescription;
+		std::string tempLoadingErrorDescription;
+		std::string tempProgramCoreErrorDescription;
 		gldev::ThreadFlag errorThreadFlag;
 		gldev::ThreadFlag* frameDataThreadFlag;
 	};

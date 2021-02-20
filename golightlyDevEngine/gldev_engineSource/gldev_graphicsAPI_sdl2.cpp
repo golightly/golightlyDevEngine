@@ -53,4 +53,8 @@ gldev::Error gldev::GraphicsAPI_sdl2::setup(InitialisationFormForProgram& initia
 	if (!(IMG_Init(imgFlags) & imgFlags)) return gldev::Error("couldn't initialise sdl_image");
 	return gldev::Error();
 }
+
+int gldev::GraphicsAPI_sdl2::run() {
+	/*while not out of frames to render, keep doing so, also input checking has to happen here*/
+}
 #endif

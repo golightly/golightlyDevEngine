@@ -4,6 +4,8 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
+#include <mutex>
+#include <condition_variable>
 
 template<>
 gldev::Program<GLDEV_GRAPHICS_API>::~Program() {
@@ -17,7 +19,8 @@ gldev::Error gldev::Program<GLDEV_GRAPHICS_API>::setup() {
 	this->programCore = new gldev::ProgramCore;
 	gldev::InitialisationFormForProgram initialisationFormForProgram;
 	initialisationFormForProgram.programName = this->programCore->getProgramName();
-	initialisationFormForProgram.windowHasInputGrabbed
+	initialisationFormForProgram.windowHasInputGrabbed = this->programCore->getWindowHasInputGrabbed();
+	initialisationFormForProgram.minimiseOnFullscreenSingleMonitorAltTab = this->programCore->getMinimiseOnFullscreenSingleMonitorAltTab();
 	std::ifstream readFile(this->getUnicodeFilePath(initialisationFormForProgram.programName, u8"initialisationDataForProgram.ini"));
 	if (!readFile.is_open()) { this->error.setError(true, "could not open initialisationDataForProgram.ini"); return this->error; }
 	std::string input;
@@ -52,16 +55,65 @@ gldev::Error gldev::Program<GLDEV_GRAPHICS_API>::setup() {
 
 template<>
 void gldev::Program<GLDEV_GRAPHICS_API>::runRenderingThread() {
-	/**/
+	while (this->useError(this->graphicsAPI->run()) == GLDEV_ERROR_NOT_FOUND) {}
 }
 
 template<>
 void gldev::Program<GLDEV_GRAPHICS_API>::runLoadingThread() {
-
+	/**/
 }
 
 template<>
 void gldev::Program<GLDEV_GRAPHICS_API>::runProgramCoreThread() {
+	/**/
+}
+
+template<>
+void gldev::Program<GLDEV_GRAPHICS_API>::writeError() {
+	if (error.getErrorDescription() != "normal program shutdown") {
+		std::ofstream writeFile(this->getUnicodeFilePath(u8"errorLog.txt", u8"initialisationDataForProgram.ini"));
+		writeFile << this->error.getErrorDescription();
+		writeFile.close();
+		writeFile.clear():
+	}
+}
+
+template<>
+bool gldev::Program<GLDEV_GRAPHICS_API>::useError(int useType) {
+	std::unique_lock<std::mutex> lock(this->errorThreadFlag.mutex);
+	while (this->errorThreadFlag.currentlyLocked)
+		this->errorThreadFlag.conditionVariable.wait(lock);
+	this->errorThreadFlag.currentlyLocked = true;
+	if (this->error.getErrorFound() == GLDEV_ERROR_FOUND) {
+		this->errorThreadFlag.currentlyLocked = false;
+		this->errorThreadFlag.conditionVariable.notify_one();
+		return GLDEV_ERROR_FOUND;
+	}
+	switch (useType) {
+	case GLDEV_ERROR_TYPE_READING_NO_ERROR_TO_WRITE :
+		this->errorThreadFlag.currentlyLocked = false;
+		this->errorThreadFlag.conditionVariable.notify_one();
+		return GLDEV_ERROR_NOT_FOUND;
+		break;
+	case GLDEV_ERROR_TYPE_WRITING_RENDERING_ERROR :
+		this->error.setError(GLDEV_ERROR_FOUND, this->tempRenderingErrorDescription.c_str());
+		break;
+	case GLDEV_ERROR_TYPE_WRITING_LOADING_ERROR :
+		this->error.setError(GLDEV_ERROR_FOUND, this->tempLoadingErrorDescription.c_str());
+		break;
+	case GLDEV_ERROR_TYPE_WRITING_PROGRAM_CORE_ERROR :
+		this->error.setError(GLDEV_ERROR_FOUND, this->tempProgramCoreErrorDescription.c_str());
+		break;
+	default:
+		break;
+	}
+	this->errorThreadFlag.currentlyLocked = false;
+	this->errorThreadFlag.conditionVariable.notify_one();
+	return GLDEV_ERROR_FOUND;
+}
+
+template<>
+void gldev::Program<GLDEV_GRAPHICS_API>::useFrameData() {
 	/**/
 }
 
