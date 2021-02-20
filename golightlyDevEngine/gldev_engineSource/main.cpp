@@ -2,6 +2,7 @@
 #include "../gldev_engineHeaders/gldev_program.h"
 #include "../gldev_engineHeaders/gldev_error.h"
 #include <thread>
+//comment
 
 void initialiseLoadingThread(gldev::Program<GLDEV_GRAPHICS_API>* program) {
 	program->runLoadingThread();
