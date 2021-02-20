@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\gldev_engineHeaders">
+      <UniqueIdentifier>{4d6e24d8-fd3c-4e86-879c-dd1623a06e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gldev_engineSource">
+      <UniqueIdentifier>{46f6b556-add5-492b-99c0-444e697d4ab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gldev_programHeaders">
+      <UniqueIdentifier>{89030292-c445-4469-b64c-d73f77dc332f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gldev_programSource">
+      <UniqueIdentifier>{90563255-0fe1-4e81-b6f0-03b413f0b69e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gldev_engineHeaders\gldev_graphicsAPI_directx12.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_graphicsAPI_opengl.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_graphicsAPI_vulkan.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_program.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_engineConditional.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_programHeaders\gldev_programConditional.h">
+      <Filter>Header Files\gldev_programHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_initialisationFormForProgram.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_programHeaders\gldev_programCore.h">
+      <Filter>Header Files\gldev_programHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_error.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_graphicsAPI_sdl2.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_loadResourceRequestForm.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_loadTextureRequestForm.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_threadFlag.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_programHeaders\gldev_resourceDataContainer.h">
+      <Filter>Header Files\gldev_programHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_size_t_withErrorReportCapability.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="gldev_engineHeaders\gldev_frameData.h">
+      <Filter>Header Files\gldev_engineHeaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gldev_engineSource\main.cpp">
+      <Filter>Source Files\gldev_engineSource</Filter>
+    </ClCompile>
+    <ClCompile Include="gldev_engineSource\gldev_program.cpp">
+      <Filter>Source Files\gldev_engineSource</Filter>
+    </ClCompile>
+    <ClCompile Include="gldev_programSource\gldev_programCore.cpp">
+      <Filter>Source Files\gldev_programSource</Filter>
+    </ClCompile>
+    <ClCompile Include="gldev_engineSource\gldev_graphicsAPI_sdl2.cpp">
+      <Filter>Source Files\gldev_engineSource</Filter>
+    </ClCompile>
+    <ClCompile Include="gldev_engineHeaders\gldev_resoureDataContainer.cpp">
+      <Filter>Source Files\gldev_programSource</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
