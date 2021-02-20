@@ -8,6 +8,7 @@ namespace gldev {
 		LoadTextureRequestForm(int subTextureNum) {
 			this->subTextureNum = subTextureNum;
 			this->subTextureID = new int[subTextureNum];
+			this->surface = nullptr;
 		}
 		void clear() {
 			if (this->subTextureNum == 0)

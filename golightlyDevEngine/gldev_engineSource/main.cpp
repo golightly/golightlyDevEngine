@@ -29,6 +29,7 @@ void initialiseProgramCoreThread(gldev::Program<GLDEV_GRAPHICS_API>* program) {
 		program.runRenderingThread();
 		loadingThread.join();
 		programCoreThread.join();
+		program.writeError();
 		return 0;
 	}
 #endif

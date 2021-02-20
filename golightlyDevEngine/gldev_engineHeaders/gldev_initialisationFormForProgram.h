@@ -6,7 +6,7 @@
 
 namespace gldev {
 	struct InitialisationFormForProgram {
-		InitialisationFormForProgram() : programName{ "" }, windowWidth{ 0 }, windowHeight{ 0 }, windowIsFullscreen{ false }, windowIsBorderless{ false }, windowIsResizable{ false }, vsyncEnabled{ false }, frameRate{ 0 } {};
+		InitialisationFormForProgram() : programName{ "" }, windowX{ 0 }, windowY{ 0 }, windowWidth{ 0 }, windowHeight{ 0 }, windowIsFullscreen{ false }, windowIsBorderless{ false }, windowIsResizable{ false }, windowHasInputGrabbed{ false }, minimiseOnFullscreenSingleMonitorAltTab{ false }, vsyncEnabled{ false }, frameRate{ 0 }, monitorToFullscreenDisplayTo{ 0 }, loadResourceRequestForm{ nullptr } {}
 		std::string programName;
 		int windowX;
 		int windowY;

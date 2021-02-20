@@ -8,10 +8,7 @@
 
 namespace gldev {
 	struct LoadResourceRequestForm {
-		LoadResourceRequestForm() {
-			this->loadTextureRequestForm = nullptr;
-			this->containsValidLoadResourceRequest = false;
-		}
+		LoadResourceRequestForm() : containsValidLoadResourceRequest{ false }, resourceID{ 0 }, resourceType{ 0 }, loadTextureRequestForm{ nullptr }, threadFlag{} {}
 		void clear() {
 			if (this->resourceType == GLDEV_RESOURCE_TYPE_TEXTURE) {
 				delete this->loadTextureRequestForm;
